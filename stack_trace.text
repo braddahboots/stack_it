@@ -1,0 +1,16 @@
+What does my input look like?
+- Text that a user inputs via a text box which is transfered and stored into a linked list file.
+
+
+What does my output look like?
+- HTML page with a text box and two buttons 'save' and 'dump'
+
+
+What is the user flow process?
+
+- There will be a text box on a web page built with HTML
+- This text box will have two buttons 'save' and 'dump'
+- 'save' - button
+  - Everytime the user clicks 'save' we are going to save the text input to our linked list as the MOST RECENT NODE or HEAD (save changes the value of head position).
+- 'dump' - button
+  - Everytime the user clicks 'dump' we are going to erase all of the nodes within linked list (entire data set). *This needs to be written as HTML

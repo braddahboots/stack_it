@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stack Trace</title>
+  <script type="text/javascript" src='linkedList.js'></script>
+  <script type="text/javascript" src='stack_trace.js' ></script>
+</head>
+<body>
+  <div>Text Here</div>
+  <textarea name='textBox' cols= "50" rows= '5'></textarea>  <!-- input text here //-->
+  <div>
+  <button onclick="addText">Save</button>  <!-- when clicked should command a function that imports text referenced in 'textarea' to stack_trace.js//-->
+  <button onclick="showText">Dump</button>  <!-- when click should command a function that resets the value of stack_trace.js//-->
+  </div>
+  <div>Text History</div>
+  <div name='history'></div>
+</body>
+</html>
