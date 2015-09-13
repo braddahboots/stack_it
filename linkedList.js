@@ -59,34 +59,6 @@ function linkedListGenerator() {
     return curNode;
   }
 
-  /* function is looking if the current node has an object attached to it's next property.
-  if it does it moves onto the next node. If it equals null it designates that node as the new tail node. */
-  function _resetHead() {
-    currentNode = head;
-  }
-
-  function _hasNext() {
-    // console.log(currentNode);
-    return currentNode !== null && (currentNode.next !== null || currentNode === tail);
-    // console.log(currentNode);
-    // if ( currentNode.next !== null) {
-    //   console.log('true');
-    //   return true;
-    // } else if ( currentNode.next !== null) {
-    //   console.log('false');
-    //   return false;
-    // } else {
-    //   return 'error';
-    // }
-  }
-  /* function is looking to see what node the next value is equal to */
-  function _next() {
-   var curNode = currentNode;
-    currentNode = currentNode.next;
-    console.log();
-    return curNode.value;
-  }
-
   //reads through our list and removes desired node
   function _remove(num) {
     var curNode = this.get(num);
@@ -113,21 +85,45 @@ function linkedListGenerator() {
   //reads through our list and adds a new node in desired index
   function _insert(val, num) {
     // console.log(val);
-    var curNode = this.get( num );
-    var preNode = this.get( num - 1);
-    var tempNode;
-    if ( num >= length || num < 0) {
-      return false;
-    } else if ( num === 0 ) {
-      tempNode = _createNode( val );
-      tempNode.next = curNode;
-      head = tempNode;
+    var next = this.get( num );
+    var prev = this.get( num - 1);
+    var node = _createNode( val );
+    if ( num === 0 ) {
+      node.next = head;
+      head = node;
+      if(length === 0){
+        tail = node;
+      }
+    } else if ( num > length - 1 || num < 0) {
+        return false;
     } else {
-      tempNode = _createNode( val );
-      preNode.next = tempNode;
-      tempNode.next = curNode;
+      prev.next = node;
+      node.next = next;
     }
     length++;
+  }
+
+  /* function is looking if the current node has an object attached to it's next property.
+  if it does it moves onto the next node. If it equals null it designates that node as the new tail node. */
+  function _resetHead() {
+    currentNode = head;
+  }
+
+  function _hasNext() {
+    // console.log(currentNode);
+    return currentNode !== null && (currentNode.next !== null || currentNode === tail);
+  }
+
+  /* function is looking to see what node the next value is equal to */
+  function _next() {
+   var curNode = currentNode;
+    currentNode = currentNode.next;
+    // console.log();
+    return curNode.value;
+  }
+
+  function _length() {
+    return this.length;
   }
 
   return {
@@ -139,19 +135,20 @@ function linkedListGenerator() {
     insert : _insert,
     hasNext : _hasNext,
     next : _next,
-    resetHead : _resetHead
+    resetHead : _resetHead,
+    length: _length
   };
 }
 
 // var ll = linkedListGenerator();
-// ll.add('ant');
-// ll.add('bat');
-// ll.add('cat');
-// ll.add('dog');
-// ll.add('elephant');
-// ll.add('fish');
-// ll.add('giraffe');
-// ll.add('hippo');
+// ll.insert('ant', 0);
+// ll.insert('bat', 0);
+// ll.insert('cat', 0);
+// ll.insert('dog', 0);
+// ll.insert('elephant', 0);
+// ll.insert('fish', 0);
+// ll.insert('giraffe', 0);
+// ll.insert('hippo', 0);
 // // console.log('ll',ll);
 // // console.log('ll.hasNext', ll.hasNext());
 
